@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  emqx1:
+    image: emqx:5.3.0
+    environment:
+      - "EMQX_NODE_NAME=emqx@node1.emqx.io"
+      - "EMQX_CLUSTER__DISCOVERY_STRATEGY=static"
+      - "EMQX_CLUSTER__STATIC__SEEDS=[emqx@node1.emqx.io,emqx@node2.emqx.io]"
+    networks:
+      emqx_network:
+        aliases:
+          - node1.emqx.io
+    ports:
+      - 18083:18083
+    deploy:
+      replicas: 1
+
+  emqx2:
+    image: emqx:5.3.0
+    environment:
+      - "EMQX_NODE_NAME=emqx@node2.emqx.io"
+      - "EMQX_CLUSTER__DISCOVERY_STRATEGY=static"
+      - "EMQX_CLUSTER__STATIC__SEEDS=[emqx@node1.emqx.io,emqx@node2.emqx.io]"
+    networks:
+      emqx_network:
+        aliases:
+          - node2.emqx.io
+    depends_on:
+      - emqx1
+    deploy:
+      replicas: 1
+
+networks:
+  emqx_network:
+    name: emqx_network
+    external: true
