@@ -1,4 +1,4 @@
-# eqmx-swarm-mode
+# emqx-swarm-mode
 ### Prerequirements
 You already have a docker swarm cluster
 
