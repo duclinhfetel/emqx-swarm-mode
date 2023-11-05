@@ -9,6 +9,6 @@ $ docker network create --driver overlay emqx_network
 
 ### Deploy the Services
 ```
-$ cd eqmx-swarm-mode
+$ cd emqx-swarm-mode
 $ docker stack deploy -c docker-compose.yml emqx
 ```
