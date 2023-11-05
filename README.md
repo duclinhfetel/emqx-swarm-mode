@@ -1,5 +1,5 @@
 # eqmx-swarm-mode
-### Prerequirments
+### Prerequirements
 You already have a docker swarm cluster
 
 ### Create a Docker Swarm Overlay Network 
