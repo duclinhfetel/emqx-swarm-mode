@@ -1,4 +1,4 @@
-# emqx-swarm-mode
+# Deploy EMQX with docker swarm mode
 ### Prerequirements
 You already have a docker swarm cluster
 
